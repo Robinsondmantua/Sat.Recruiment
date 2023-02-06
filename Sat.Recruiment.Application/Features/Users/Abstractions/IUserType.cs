@@ -9,6 +9,6 @@ namespace Sat.Recruiment.Application.Features.Users.Abstractions
 {
     public interface IUserType
     {
-        Task Create(UserDto userDto);
+        Task<UserDto> Create(UserDto userDto);
     }
 }

@@ -1,4 +1,4 @@
-﻿using Sat.Recruiment.Api.Enums;
+﻿using Sat.Recruiment.Domain.Enums;
 
 namespace Sat.Recruiment.Api.Dto.Request
 {

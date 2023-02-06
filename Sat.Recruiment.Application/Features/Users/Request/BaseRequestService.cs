@@ -7,7 +7,7 @@ using Sat.Recruiment.Application.Features.Users.Dto;
 
 namespace Sat.Recruiment.Application.Features.Users.Request
 {
-    internal class UserBaseHandler<T> where T : UserDto
+    public class BaseRequestService<T> where T : UserDto
     {
         public T RequestParams { get; set; }
     }

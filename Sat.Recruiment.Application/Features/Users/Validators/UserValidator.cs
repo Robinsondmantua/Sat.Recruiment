@@ -8,9 +8,13 @@ using Sat.Recruiment.Application.Features.Users.Request;
 
 namespace Sat.Recruiment.Application.Features.Users.Validators
 {
-    internal class PremiumUserValidator : AbstractValidator<PremiumUserRequest>
+    /// <summary>
+    /// Class to validate a normal user
+    /// </summary>
+
+    internal class UserValidator : AbstractValidator<UserRequestService>
     {
-        public PremiumUserValidator()
+        public UserValidator()
         {
             RuleFor(v => v.RequestParams).SetValidator(new UserBaseValidator());
         }

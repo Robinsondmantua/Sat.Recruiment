@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Sat.Recruiment.Domain.Enums;
 
-namespace Sat.Recruiment.Application.Features.Users.Dto
+namespace Sat.Recruiment.Domain.Models
 {
-    public class UserDto
+    /// <summary>
+    /// Entity User
+    /// </summary>
+    public class User
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

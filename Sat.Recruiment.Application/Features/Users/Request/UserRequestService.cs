@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
@@ -8,9 +9,9 @@ using Sat.Recruiment.Application.Features.Users.Dto;
 
 namespace Sat.Recruiment.Application.Features.Users.Request
 {
-    internal class PremiumUserRequest : UserBaseHandler<UserDto>, IRequest<UserDto>
+    public class UserRequestService : BaseRequestService<UserDto>, IRequest<UserDto>
     {
-        public PremiumUserRequest(UserDto requestParams)
+        public UserRequestService(UserDto requestParams)
         {
             RequestParams = requestParams;
         }
