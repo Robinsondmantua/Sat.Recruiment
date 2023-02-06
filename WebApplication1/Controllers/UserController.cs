@@ -15,7 +15,8 @@ namespace Sat.Recruiment.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> CreateUser([FromBody] NewUserDto command)
         {
-            var user = await Mediator.Send(new )
+            //var user = await Mediator.Send(new )
+            return Ok();
         }
     }
 }

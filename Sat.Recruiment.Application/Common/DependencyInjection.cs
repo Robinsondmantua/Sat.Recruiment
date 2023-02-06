@@ -30,20 +30,20 @@ namespace Sat.Recruiment.Application.Common
         }
         private static IServiceCollection AddUserTypeFactory (this IServiceCollection services)
         {
-            services.AddSingleton<NormalUserService>();
-            services.AddSingleton<PremiumUserService>();
-            services.AddSingleton<SuperUserService>();
+            services.AddSingleton<NormalUserWriteService>();
+            services.AddSingleton<PremiumUserWriteService>();
+            services.AddSingleton<SuperUserWriteService>();
 
             services.AddTransient<Func<UserType, IUserType>>(serviceProvider => key =>
             {
                 switch(key)
                 {
                     case UserType.Normal:
-                        return serviceProvider.GetRequiredService<NormalUserService>();
+                        return serviceProvider.GetRequiredService<NormalUserWriteService>();
                     case UserType.SuperUser:
-                        return serviceProvider.GetRequiredService<SuperUserService>();
+                        return serviceProvider.GetRequiredService<SuperUserWriteService>();
                     case UserType.Premium:
-                        return serviceProvider.GetRequiredService<SuperUserService>();
+                        return serviceProvider.GetRequiredService<SuperUserWriteService>();
                     default:
                         return null;
                 }
