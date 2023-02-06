@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sat.Recruiment.Api.Dto.Request;
+using Sat.Recruiment.Application.Features.Users.Commands.Request;
 
 namespace Sat.Recruiment.Api.Controllers
 {
@@ -13,10 +14,10 @@ namespace Sat.Recruiment.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> CreateUser([FromBody] NewUserDto command)
+        public async Task<ActionResult> CreateUser([FromBody] NewUserRequest command)
         {
-            //var user = await Mediator.Send(new )
-            return Ok();
+            var result = await Mediator.Send(command);
+            return CreatedAtAction(nameof(CreateUser), result);
         }
     }
 }

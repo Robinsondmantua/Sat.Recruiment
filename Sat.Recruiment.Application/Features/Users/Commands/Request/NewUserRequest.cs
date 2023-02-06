@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using MediatR;
 using Sat.Recruiment.Application.Features.Users.Dto;
 
-namespace Sat.Recruiment.Application.Features.Users.Request
+namespace Sat.Recruiment.Application.Features.Users.Commands.Request
 {
-    public class UserRequestService : BaseRequestService<UserDto>, IRequest<UserDto>
+    public class NewUserRequest : BaseRequestService<UserDto>, IRequest<UserDto>
     {
-        public UserRequestService(UserDto requestParams)
+        public NewUserRequest(UserDto requestParams)
         {
             RequestParams = requestParams;
         }

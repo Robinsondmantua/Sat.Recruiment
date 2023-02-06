@@ -12,11 +12,11 @@ namespace Sat.Recruiment.Infraestructure.Repository
     /// </summary>
     internal class InMemoryContext : IMemoryContext
     {
-        public List<User> Users { get; set; } = new List<User>();
+        public List<Domain.Models.User> Users { get; set; } = new List<Domain.Models.User>();
     }
 
-    internal interface IMemoryContext
+    public interface IMemoryContext
     {
-        List<User> Users { get; set; }
+        List<Domain.Models.User> Users { get; set; }
     }
 }

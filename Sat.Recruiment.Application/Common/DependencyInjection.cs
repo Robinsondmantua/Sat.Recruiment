@@ -9,7 +9,8 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Sat.Recruiment.Application.Common.Behaviors;
 using Sat.Recruiment.Application.Features.Users.Abstractions;
-using Sat.Recruiment.Application.Features.Users.Services;
+using Sat.Recruiment.Application.Features.Users.Commands.Services;
+using Sat.Recruiment.Application.Features.Users.Commands.Services.Profit;
 using Sat.Recruiment.Domain.Enums;
 
 namespace Sat.Recruiment.Application.Common
@@ -30,20 +31,20 @@ namespace Sat.Recruiment.Application.Common
         }
         private static IServiceCollection AddUserTypeFactory (this IServiceCollection services)
         {
-            services.AddSingleton<NormalUserWriteService>();
-            services.AddSingleton<PremiumUserWriteService>();
-            services.AddSingleton<SuperUserWriteService>();
+            services.AddSingleton<NormalUserProfitService>();
+            services.AddSingleton<PremiumUserProfitService>();
+            services.AddSingleton<SuperUserProfitService>();
 
-            services.AddTransient<Func<UserType, IUserType>>(serviceProvider => key =>
+            services.AddTransient<Func<UserType, IUserProfit>>(serviceProvider => key =>
             {
-                switch(key)
+                switch (key)
                 {
                     case UserType.Normal:
-                        return serviceProvider.GetRequiredService<NormalUserWriteService>();
+                        return serviceProvider.GetRequiredService<NormalUserProfitService>();
                     case UserType.SuperUser:
-                        return serviceProvider.GetRequiredService<SuperUserWriteService>();
+                        return serviceProvider.GetRequiredService<PremiumUserProfitService>();
                     case UserType.Premium:
-                        return serviceProvider.GetRequiredService<SuperUserWriteService>();
+                        return serviceProvider.GetRequiredService<SuperUserProfitService>();
                     default:
                         return null;
                 }

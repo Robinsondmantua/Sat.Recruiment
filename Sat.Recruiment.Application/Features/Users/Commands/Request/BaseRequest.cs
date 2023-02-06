@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sat.Recruiment.Application.Features.Users.Dto;
 
-namespace Sat.Recruiment.Application.Features.Users.Request
+namespace Sat.Recruiment.Application.Features.Users.Commands.Request
 {
     public class BaseRequestService<T> where T : UserDto
     {
