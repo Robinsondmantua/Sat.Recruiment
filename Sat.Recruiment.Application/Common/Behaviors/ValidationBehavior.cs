@@ -35,7 +35,7 @@ namespace Sat.Recruiment.Application.Common.Behaviors
 
                 if (failures.Count != 0)
                 {
-                    //throw new Application.Common.Exceptions.ValidationException(failures);
+                    throw new ValidationException(failures);
                 }
             }
             return await next();

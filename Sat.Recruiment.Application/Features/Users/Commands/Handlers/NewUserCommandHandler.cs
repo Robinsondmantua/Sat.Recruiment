@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Sat.Recruiment.Application.Common.Abstractions;
+using Sat.Recruiment.Application.Common.Exceptions;
 using Sat.Recruiment.Application.Features.Users.Abstractions;
 using Sat.Recruiment.Application.Features.Users.Commands.Request;
 using Sat.Recruiment.Application.Features.Users.Dto;
@@ -42,7 +43,7 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Handlers
 
             if (isUserDuplicated)
             {
-                //Lanzar excepción de duplicados.
+                throw new DuplicateDataException("User duplicated");
             }
 
             var result = await Task.Run(() => { return _commandRepository.AddAsync(newUser); });
