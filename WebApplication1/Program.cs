@@ -23,8 +23,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sat.Recruiment.Api v1"));
 }
 
-app.UseExceptionHandler("/api/Errors/error");
-
+app.UseExceptionHandler(
+              new ExceptionHandlerOptions()
+              {
+                  ExceptionHandlingPath = "/api/errors/error"
+              }
+);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

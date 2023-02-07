@@ -13,20 +13,16 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Services.Profit
         const decimal PERCENTAGE_MAX_100 = 0.2M;
         public async Task<decimal> GetMoneyProfitAsync(decimal money)
         {
-            var task = Task.Run(() => {
-                decimal _percentage = 0;
+            decimal _percentage = 0;
 
-                if (money > 100)
-                {
-                    _percentage = PERCENTAGE_MAX_100;
-                    var gif = money * _percentage;
-                    money = money + gif;
-                }
+            if (money > 100)
+            {
+                _percentage = PERCENTAGE_MAX_100;
+                var gif = money * _percentage;
+                money = money + gif;
+            }
 
-                return money;
-            });
-
-            return await task;
+            return await Task.FromResult(money);
         }
     }
 }

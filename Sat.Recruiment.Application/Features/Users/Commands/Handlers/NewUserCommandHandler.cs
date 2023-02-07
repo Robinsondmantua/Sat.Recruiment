@@ -52,8 +52,7 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Handlers
                 throw new DuplicateDataException("User duplicated");
             }
 
-            var result = await Task.Run(() => { return _commandRepository.AddAsync(newUser); });
-            
+            var result = await _commandRepository.AddAsync(newUser);
             return _mapper.Map<NewUserDto>(result);
         }
     }

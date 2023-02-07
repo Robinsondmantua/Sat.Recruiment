@@ -25,7 +25,7 @@ namespace Sat.Recruiment.Infraestructure.Repository.User
         {
             _memoryContext.Users.Add(entity);
             await _unitOfWork.CommitAsync();
-            return entity;
+            return await Task.FromResult(entity);
         }
     }
 }

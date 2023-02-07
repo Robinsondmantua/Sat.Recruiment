@@ -14,18 +14,13 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Services.Profit
 
         public async Task<decimal> GetMoneyProfitAsync(decimal money)
         {
-            var task = Task.Run(() =>
+            if (money > 100)
             {
-                if (money > 100)
-                {
-                    var gif = money * DUPLICATED_BENEFIT;
-                    money = money + gif;
-                }
+                var gif = money * DUPLICATED_BENEFIT;
+                money = money + gif;
+            }
 
-                return money;
-            });
-
-            return await task;
+            return await Task.FromResult(money);
         }
     }
 }
