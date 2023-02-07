@@ -29,8 +29,8 @@ namespace Sat.Recruiment.UnitTest.Application.Users.Commands.Handlers
         private readonly IMapper _mapper;
         private readonly Mock<Func<UserType, IUserProfit>> _userType = new Mock<Func<UserType, IUserProfit>>();
         private readonly Mock<IUserProfit> _userProfit = new Mock<IUserProfit>();
-        private readonly Mock<IQueryRepository<Domain.Models.User>> _userQueryRepository = new Mock<IQueryRepository<Domain.Models.User>>();
-        private readonly Mock<ICommandRepository<Domain.Models.User>> _userCommandRepository = new Mock<ICommandRepository<Domain.Models.User>>();
+        private readonly Mock<IQueryRepository<User>> _userQueryRepository = new Mock<IQueryRepository<User>>();
+        private readonly Mock<ICommandRepository<User>> _userCommandRepository = new Mock<ICommandRepository<User>>();
         private readonly NewUserCommandHandler _sut;
         private readonly Fixture _fixture;
         public NewUserCommandHandlerTest()
@@ -59,6 +59,7 @@ namespace Sat.Recruiment.UnitTest.Application.Users.Commands.Handlers
             _userType.Setup(r => r(It.IsAny<UserType>())).Returns(_userProfit.Object);
             _userProfit.Setup(r=>r.GetMoneyProfitAsync(It.IsAny<decimal>())).ReturnsAsync(0.8M);
             _userQueryRepository.Setup(r => r.CheckDuplicatesEntriesAsync(It.IsAny<User>())).ReturnsAsync(true);
+            
             //Act
             Func<Task> act = async () => await _sut.Handle(commandRequest, CancellationToken.None);
 
