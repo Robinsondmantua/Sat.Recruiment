@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using Sat.Recruiment.Api.Middelwares;
 using Sat.Recruiment.Application.Common;
 using Sat.Recruiment.Infraestructure;
 
@@ -23,16 +24,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sat.Recruiment.Api v1"));
 }
 
-app.UseExceptionHandler(
-              new ExceptionHandlerOptions()
-              {
-                  ExceptionHandlingPath = "/api/errors/error"
-              }
-);
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
 app.MapControllers();
+app.UseAuthorization();
+app.UseMiddleware<GlobalExceptionHandler>();
 
 app.Run();

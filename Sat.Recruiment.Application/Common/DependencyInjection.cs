@@ -9,7 +9,6 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Sat.Recruiment.Application.Common.Behaviors;
 using Sat.Recruiment.Application.Features.Users.Abstractions;
-using Sat.Recruiment.Application.Features.Users.Commands.Services;
 using Sat.Recruiment.Application.Features.Users.Commands.Services.Profit;
 using Sat.Recruiment.Domain.Enums;
 
