@@ -12,24 +12,24 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Services.Profit
     {
         const decimal PERCENTAGE_MAX_100 = 0.12M;
         const decimal PERCENTAGE_BETWEEN_10_AND_100 = 0.8M;
-        public async Task<UserDto> GetMoneyProfitAsync(UserDto user)
+        public async Task<decimal> GetMoneyProfitAsync(decimal money)
         {
             var task = Task.Run(() => {
                 decimal percentage = 0;
-                if (user.Money > 100)
+                if (money > 100)
                 {
                     percentage = PERCENTAGE_MAX_100;
                 }
 
-                if (user.Money > 10 && user.Money < 100)
+                if (money > 10 && money < 100)
                 {
                     percentage = PERCENTAGE_BETWEEN_10_AND_100;
                 }
 
-                var gif = user.Money * percentage;
-                user.Money = user.Money + gif;
+                var gif = money * percentage;
+                money = money + gif;
 
-                return user;
+                return money;
             });
 
             return await task;

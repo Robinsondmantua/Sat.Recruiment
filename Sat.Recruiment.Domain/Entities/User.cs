@@ -12,12 +12,31 @@ namespace Sat.Recruiment.Domain.Models
     /// </summary>
     public class User
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public UserType UserType { get; set; }
-        public decimal Money { get; set; }
+        public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string Email { get; private set; }
+        public string Address { get; private set; }
+        public string Phone { get; private set; }
+        public UserType UserType { get; private set; }
+        public decimal Money { get; private set; }
+
+        public static User Create(string name,
+            string email, 
+            string address, 
+            string phone, 
+            UserType userType,
+            Decimal money)
+        {
+            return new User
+            {
+                Id = Guid.NewGuid(),
+                Name = name,
+                Email = email,
+                Address = address,
+                Phone = phone,
+                UserType = userType,
+                Money = money
+            };
+        }
     }
 }

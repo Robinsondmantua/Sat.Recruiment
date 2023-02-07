@@ -16,7 +16,7 @@ namespace Sat.Recruiment.Application.Features.Users.Mapping
     {
         public UserMappingProfile()
         {
-            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<User, NewUserDto>().ReverseMap();
         }
     }
 }

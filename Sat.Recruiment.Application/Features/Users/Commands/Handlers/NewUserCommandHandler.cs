@@ -15,7 +15,7 @@ using Sat.Recruiment.Domain.Models;
 
 namespace Sat.Recruiment.Application.Features.Users.Commands.Handlers
 {
-    public class NewUserCommandHandler : IRequestHandler<NewUserRequest, UserDto>
+    public class NewUserCommandHandler : IRequestHandler<NewUserRequest, NewUserDto>
     {
         private readonly Func<UserType, IUserProfit> _userProfit;
         private readonly ICommandRepository<User> _commandRepository;
@@ -33,11 +33,17 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Handlers
             _mapper = mapper;
         }
 
-        public async Task<UserDto> Handle(NewUserRequest request, CancellationToken cancellationToken)
+        public async Task<NewUserDto> Handle(NewUserRequest request, CancellationToken cancellationToken)
         {
             var userProfitObject = _userProfit(request.RequestParams.UserType);
-            var userProfit = await userProfitObject.GetMoneyProfitAsync(request.RequestParams);
-            var newUser = _mapper.Map<User>(userProfit);
+            var newUserProfit = await userProfitObject.GetMoneyProfitAsync(request.RequestParams.Money);
+
+            var newUser = User.Create(request.RequestParams.Name, 
+                request.RequestParams.Email, 
+                request.RequestParams.Address, 
+                request.RequestParams.Phone, 
+                request.RequestParams.UserType,
+                newUserProfit);
 
             var isUserDuplicated = await _queryRepository.CheckDuplicatesEntriesAsync(newUser);
 
@@ -48,7 +54,7 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Handlers
 
             var result = await Task.Run(() => { return _commandRepository.AddAsync(newUser); });
             
-            return _mapper.Map<UserDto>(result);
+            return _mapper.Map<NewUserDto>(result);
         }
     }
 }

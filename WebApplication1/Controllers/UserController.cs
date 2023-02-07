@@ -5,8 +5,6 @@ using Sat.Recruiment.Application.Features.Users.Commands.Request;
 
 namespace Sat.Recruiment.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class UserController : ApiControllerBase
     {
         [HttpPost]

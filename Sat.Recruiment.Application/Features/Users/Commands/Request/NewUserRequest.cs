@@ -9,9 +9,9 @@ using Sat.Recruiment.Application.Features.Users.Dto;
 
 namespace Sat.Recruiment.Application.Features.Users.Commands.Request
 {
-    public class NewUserRequest : BaseRequestService<UserDto>, IRequest<UserDto>
+    public class NewUserRequest : BaseRequestService<NewUserDto>, IRequest<NewUserDto>
     {
-        public NewUserRequest(UserDto requestParams)
+        public NewUserRequest(NewUserDto requestParams)
         {
             RequestParams = requestParams;
         }

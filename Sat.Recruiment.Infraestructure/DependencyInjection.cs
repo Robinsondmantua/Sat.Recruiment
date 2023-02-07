@@ -14,9 +14,9 @@ namespace Sat.Recruiment.Infraestructure
         public static IServiceCollection AddInfraestructure(this IServiceCollection services)
         {
             services.AddTransient<IUnitOfWork, MemoryUnitOfWork>();
-            services.AddTransient<IMemoryContext, InMemoryContext>();
-            services.AddTransient<ICommandRepository<User>, UserRepositoryCommand>();
-            services.AddTransient<IQueryRepository<User>, UserRepositoryQueries>();
+            services.AddSingleton<IMemoryContext, InMemoryContext>();
+            services.AddSingleton<ICommandRepository<User>, UserRepositoryCommand>();
+            services.AddSingleton<IQueryRepository<User>, UserRepositoryQueries>();
             return services;
         }
     }

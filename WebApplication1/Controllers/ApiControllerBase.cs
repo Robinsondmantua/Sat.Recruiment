@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Sat.Recruiment.Api.Controllers
 {
     [ApiController]
-    [ApiExplorerSettings(IgnoreApi = true)]
+    [Route("api/[controller]")]
     public abstract class ApiControllerBase : ControllerBase
     {
         private ISender _mediator;

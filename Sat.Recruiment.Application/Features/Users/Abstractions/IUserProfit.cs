@@ -9,6 +9,6 @@ namespace Sat.Recruiment.Application.Features.Users.Abstractions
 {
     public interface IUserProfit
     {
-        Task<UserDto> GetMoneyProfitAsync(UserDto user);
+        Task<decimal> GetMoneyProfitAsync(decimal money);
     }
 }

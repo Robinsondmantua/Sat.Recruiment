@@ -10,19 +10,19 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Services.Profit
 {
     public class PremiumUserProfitService : IUserProfit
     {
-        const decimal DUPLICATE_BENEFIT = 2.0M;
+        const decimal DUPLICATED_BENEFIT = 2.0M;
 
-        public async Task<UserDto> GetMoneyProfitAsync(UserDto user)
+        public async Task<decimal> GetMoneyProfitAsync(decimal money)
         {
             var task = Task.Run(() =>
             {
-                if (user.Money > 100)
+                if (money > 100)
                 {
-                    var gif = user.Money * DUPLICATE_BENEFIT;
-                    user.Money = user.Money + gif;
+                    var gif = money * DUPLICATED_BENEFIT;
+                    money = money + gif;
                 }
 
-                return user;
+                return money;
             });
 
             return await task;

@@ -9,7 +9,7 @@ using Sat.Recruiment.Application.Features.Users.Dto;
 
 namespace Sat.Recruiment.Application.Features.Users.Validators
 {
-    internal class UserBaseValidator : AbstractValidator<UserDto>
+    internal class UserBaseValidator : AbstractValidator<NewUserDto>
     {
         public UserBaseValidator() { 
             RuleFor(x => x.Name).NotNull().NotEmpty();

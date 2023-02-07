@@ -1,9 +1,11 @@
 using Microsoft.OpenApi.Models;
 using Sat.Recruiment.Application.Common;
+using Sat.Recruiment.Infraestructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplication();
+builder.Services.AddInfraestructure();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -15,12 +17,13 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sat.Recruiment.Api v1"));
 }
+
+app.UseExceptionHandler("/api/Errors/error");
 
 app.UseHttpsRedirection();
 

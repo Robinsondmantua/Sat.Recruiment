@@ -11,22 +11,22 @@ namespace Sat.Recruiment.Application.Features.Users.Commands.Services.Profit
     public class SuperUserProfitService : IUserProfit
     {
         const decimal PERCENTAGE_MAX_100 = 0.2M;
-        public Task<UserDto> GetMoneyProfitAsync(UserDto user)
+        public async Task<decimal> GetMoneyProfitAsync(decimal money)
         {
             var task = Task.Run(() => {
                 decimal _percentage = 0;
 
-                if (user.Money > 100)
+                if (money > 100)
                 {
                     _percentage = PERCENTAGE_MAX_100;
-                    var gif = user.Money * _percentage;
-                    user.Money = user.Money + gif;
+                    var gif = money * _percentage;
+                    money = money + gif;
                 }
 
-                return user;
+                return money;
             });
 
-            return task;
+            return await task;
         }
     }
 }

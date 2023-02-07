@@ -7,9 +7,8 @@ using Sat.Recruiment.Domain.Enums;
 
 namespace Sat.Recruiment.Application.Features.Users.Dto
 {
-    public class UserDto
+    public class NewUserDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
